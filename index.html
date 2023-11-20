@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>
+            WEATHER
+        </title>
+        <style>
+            body{
+    background-image:url(123.jpg);
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 250px;
+}
+#city
+{
+    background-color:white;
+    color: black;
+    height:30px;
+}
+#btn{
+    background-color: blue;
+    color: white;
+    height:30px;
+}
+#output{
+    margin-left: 645px;
+    margin-right: 700px;
+    border: solid 2px;
+    width:230px;
+    height:30px;
+    background-color: gray;
+    /* color:blue; */
+}
+#temp{
+    height: 100px;
+
+    color: rgb(26, 23, 23);
+}
+hr{
+    color:black;
+}
+        </style>
+    </head>
+    <body>
+       <hr><hr> <h1 id="temp"><br><u>TEMPERATURE</u></h1></hr></hr>
+       <hr><hr> </hr></hr><br><br>
+        <input type="text" id="city" />
+        <button id="btn" onclick="displayresult()">Submit</button><br><br>
+        <p id="output"></p>
+        <script>
+            function displayresult(){
+    var city = document.getElementById("city").value;
+    var apikey='8bf75e4cad67575beecfea87e86c6fed';
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='
+    + city + '&appid='+apikey+'&units=metric')
+    .then(response=>response.json())
+    .then (data=> {
+        var t= data['main']['temp']
+        document.getElementById("output").innerHTML = t;
+    })
+}
+
+        </script>
+    </body>
+</html>
